@@ -1,17 +1,17 @@
 //class Example {
-// 	constructor(shipName){
-// 		this.shipName = shipName
-// 		this.method = this.method.bind(this)
-// 	}
-
-// 	methodFromExample(){
-// 	 return this.shipName
-// 	}
-// }
-
-const attackBtn = document.querySelector('#attack-btn');
-
-// btnEl.addEventListener('click', methodFromExample)
+    // 	constructor(shipName){
+        // 		this.shipName = shipName
+        // 		this.method = this.method.bind(this)
+        // 	}
+        
+        // 	methodFromExample(){
+            // 	 return this.shipName
+            // 	}
+            // }
+            
+            const attackBtn = document.querySelector('#attack-btn');
+            
+            // btnEl.addEventListener('click', methodFromExample)
 
 class Ship {
     constructor(shipName, hull, firepower, accuracy) {
@@ -23,23 +23,29 @@ class Ship {
     }
     attack(target) {
         console.log(`${this.shipName} is attacking....`);
-        console.dir(this);
-        //getting hit
-        target.hull -= this.firepower;
-        
-        //check if target has been destroyed
-        if (target.hull <= 0) {
-            console.log(`${target.shipName} has been destroyed`);
+        // console.dir(this);
+        // if random accuracy is <= alien.accuracy
+        if (Math.random() < alienArmy[0].accuracy) {
+            console.log(`${this.shipName}, You have been hit!`);
+            //getting hit
+            target.hull -= this.firepower;
+            
+            //check if target has been destroyed
+            if (target.hull <= 0) {
+            console.log(`${target} has been destroyed`);
             
         }
         
     }
-    // accuracy() {
+}
+}
+const USS_Assembly1 = new Ship('USS',20,5,7);
+// accuracy() {
         //      if (Math.random() < alien[0].accuracy) {
             //         	console.log('You have been hit!');
             
             // }
-        }
+        // }
         
         // retrieve()
         // }
@@ -68,26 +74,55 @@ class Ship {
     constructor(shipName, hull, firepower, accuracy){
     //used to call the constructor of its parent class to access the parent's properties and methods.
     super()
-    this.shipName = shipName;
-    this.hull = getRandomIntInclusive(3, 6);
-    this.firepower = getRandomIntInclusive(2, 4);
-    this.accuracy = getRandomIntInclusive(0.6, 0.8);
+    this.shipName = Alien_Assembly;
+    this.hull = getRandomValue(3, 6);
+    this.firepower = getRandomValue(2, 4);
+    this.accuracy = getRandomValue(0.6, 0.8);
     }
 }
-    //Get random number (inclusive) for Alien Ships key values
-    function getRandomIntInclusive(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
+    //Get random number within given range for Alien Ships key values
+    function getRandomValue(min, max) {
+     return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
     }
+    //creating Alien Army
+    const alienArmy = [];
+    for (let i = 0; i <= 5; i++) { 
+        // function create_new_ship() {
+        // const alienArmy = new Alien_Assembly('Alien Army', this.hull, this.firepower, this. accuracy)
+        alienArmy.push(new Alien_Assembly());
+    }
+    console.log(alienArmy);
+// }
+
+// const game = {
+    for (let j = 0; j <alienArmy.length; j++) {
+        const Alien_Assembly_in_Action = alienArmy[j];
+        USS_Assembly1.attack(alienArmy[j])
+
+    }
+
+//     check_win(target) {
+//         //if random accuracy is <= alien.accuracy
+//         if (Math.random() < alien[0].accuracy) {
+//             console.log('You have been hit!');
+
+//         //check if target has been destroyed
+//             if (target.hull <= 0) {
+//                 console.log(`${target.shipName} has been destroyed`);                
+//             } else {
+//                 attack()
+//             }
+
+//     }
+// }
+// }                            
                         
                         
                         
                         
                         
-                        
-const alien = [];
-const USS_Assembly1 = new Ship('USS',20,5,7);
+
+
 const Alien_Assembly1 = new Alien_Assembly('Alien',30,7,10)
 // event listener
 attackBtn.addEventListener('click', USS_Assembly1.attack);
@@ -123,6 +158,3 @@ USS_Assembly1.attack(Alien_Assembly1);
 // }
 
 
-// this.hull = Math.floor(Math.random() * 4) + 3;
-// this.firepower = Math.floor(Math.random() * 3) + 2;
-// this.accuracy = Math.random() * 0.2 + 0.6;
